@@ -136,6 +136,7 @@ void marcarCompletada(Nodo** pendientes,Nodo** completada,int id){
 void consultaId(Nodo* pendientes,Nodo* completada,int id){
     printf("-----CONSULTA POR ID-----");
     int seEncontro=0;
+    //Como el id es unico, si la tarea se encuentra en pendientes, no puede estar tambien en completadas.
     while(pendientes!=NULL){
         if(pendientes->T.tareaID==id){
             printf("ID: %d\n",pendientes->T.tareaID);
@@ -161,6 +162,7 @@ void consultaId(Nodo* pendientes,Nodo* completada,int id){
 }
 
 void consultaPalabraClave(Nodo* pendientes,Nodo* completada,char* palabra){
+    //La palabra clave puede estar en las completadas y en las pendientes, por lo que necesariamente buscamos en ambas.
     printf("-----CONSULTA POR PALABRA CLAVE-----");
     while(pendientes!=NULL){
         if(strstr(pendientes->T.descripcion,palabra)!=NULL){
